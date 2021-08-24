@@ -2,7 +2,8 @@
     "compilerOptions": {
         "target": "ES2015",
         "module": "ES2015",
-        "outDir": "dist"
+        "outDir": "dist",
+        "sourceMap": true
     },
     "extends": "@tsconfig/recommended/tsconfig.json",
     "include": ["ts/**/*"],
