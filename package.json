@@ -1,0 +1,21 @@
+{
+  "name": "canvas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "serve": "serve -l 8080 .",
+    "debug": "npm-run-all --parallel watch serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "npm-run-all": "^4.1.5",
+    "serve": "^12.0.0",
+    "typescript": "^4.3.5"
+  }
+}

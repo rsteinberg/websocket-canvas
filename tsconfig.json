@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",
+        "module": "ES2015",
+        "outDir": "dist"
+    },
+    "extends": "@tsconfig/recommended/tsconfig.json",
+    "include": ["ts/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+}
