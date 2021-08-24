@@ -2,6 +2,7 @@ class CanvasController {
     private canvas: HTMLCanvasElement;
     private canvasDiv: HTMLDivElement;
     private ctx: CanvasRenderingContext2D | null;
+    private ws: WebSocket;
 
     private isMouseDown: boolean = false;
     private x: number = 0;
@@ -11,18 +12,21 @@ class CanvasController {
     private currentPath: Coordinates[] = [];
 
     constructor() {
-        this.canvas = document.createElement("canvas");
-        this.canvasDiv = document.querySelector("#canvas") as HTMLDivElement;
+        this.canvas = document.createElement('canvas');
+        this.canvasDiv = document.querySelector('#canvas') as HTMLDivElement;
 
         this.canvasDiv.appendChild(this.canvas);
         this.canvas.width = this.canvas.offsetWidth;
         this.canvas.height = this.canvas.offsetHeight;
-        this.ctx = this.canvas.getContext("2d");
+        this.ctx = this.canvas.getContext('2d');
 
         // Events
-        this.canvasDiv.addEventListener("mousedown", e => this.onMouseDown(e));
-        this.canvasDiv.addEventListener("mouseup", () => this.onMouseUp());
-        this.canvasDiv.addEventListener("mousemove", e => this.onMouseMove(e));
+        this.canvasDiv.addEventListener('mousedown', e => this.onMouseDown(e));
+        this.canvasDiv.addEventListener('mouseup', () => this.onMouseUp());
+        this.canvasDiv.addEventListener('mousemove', e => this.onMouseMove(e));
+
+        this.ws = new WebSocket('ws://localhost:8081', 'json');
+        this.ws.onopen = () => this.ws.send("SENDER");
     }
 
     onMouseDown(event: MouseEvent) {
@@ -36,6 +40,7 @@ class CanvasController {
         this.isMouseDown = false;
         this.ctx?.closePath();
         this.paths.push(this.currentPath);
+        this.sendPath();
     }
 
     onMouseMove(event: MouseEvent) {
@@ -53,6 +58,10 @@ class CanvasController {
 
         this.x = event.clientX;
         this.y = event.clientY;
+    }
+
+    sendPath() {
+        this.ws.send(JSON.stringify(this.currentPath));
     }
 }
 
