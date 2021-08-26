@@ -1,7 +1,7 @@
-import Coordinates from "./canvas-util/coordinates.js";
 import CanvasUtil from "./canvas-util/canvasUtil.js";
+import Coordinates from "./canvas-util/coordinates.js";
 
-class CanvasController {
+class CanvasSenderController {
     private canvasUtil: CanvasUtil;
     private canvasDiv: HTMLDivElement;
     private ws: WebSocket;
@@ -60,6 +60,6 @@ class CanvasController {
 }
 
 
-const app = new CanvasController();
+const app = new CanvasSenderController();
 
 export { app };
