@@ -10,7 +10,7 @@
     "debug": "npm-run-all --parallel watch serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "run-server": "cd server && npm run launch",
-    "launch": "npm-run-all --parallel run-server build serve"
+    "launch": "npm install && npm-run-all --parallel run-server build serve"
   },
   "author": "",
   "license": "ISC",
