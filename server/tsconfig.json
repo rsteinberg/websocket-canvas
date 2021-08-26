@@ -1,0 +1,10 @@
+{
+    "extends": "@tsconfig/node16/tsconfig.json",
+    "compilerOptions": {
+      "sourceMap": true,
+      "outDir": "dist",
+      "moduleResolution": "node"
+    },
+    "include": ["ts/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+}

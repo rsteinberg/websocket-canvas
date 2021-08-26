@@ -1,5 +1,6 @@
 import CanvasUtil from "./canvas-util/canvasUtil.js";
 import Coordinates from "./canvas-util/coordinates.js";
+import { getWebsocketUrl } from "./websocket/websocket.js";
 
 class CanvasSenderController {
     private canvasUtil: CanvasUtil;
@@ -28,7 +29,7 @@ class CanvasSenderController {
             canvas.addEventListener('touchmove', e => this.onMouseMove(e.touches[0]));
         }
 
-        this.ws = new WebSocket('ws://localhost:8081', 'json');
+        this.ws = new WebSocket(getWebsocketUrl(), 'json');
         this.ws.onopen = () => this.ws.send('SENDER');
     }
 

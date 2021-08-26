@@ -8,7 +8,9 @@
     "watch": "tsc -watch -p ./",
     "serve": "serve -l 8080 .",
     "debug": "npm-run-all --parallel watch serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-server": "cd server && npm run launch",
+    "launch": "npm-run-all --parallel run-server build serve"
   },
   "author": "",
   "license": "ISC",

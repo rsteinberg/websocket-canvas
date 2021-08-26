@@ -1,8 +1,8 @@
 import CanvasUtil from './canvas-util/canvasUtil.js';
 import Coordinates from './canvas-util/coordinates.js';
+import { getWebsocketUrl } from "./websocket/websocket.js";
 
 class CanvasReceiverController {
-    private canvas!: HTMLCanvasElement;
     private canvasDiv: HTMLDivElement;
     private canvasUtil: CanvasUtil;
     private ws: WebSocket;
@@ -23,7 +23,7 @@ class CanvasReceiverController {
             alert('Canvas API unavailable, drawing will not work!');
         }
 
-        this.ws = new WebSocket('ws://localhost:8081', 'json');
+        this.ws = new WebSocket(getWebsocketUrl(), 'json');
 
         this.ws.onmessage = message => this.processMessage(message);
         this.ws.onopen = () => this.ws.send('RECEIVER');
